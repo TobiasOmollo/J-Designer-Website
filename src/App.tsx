@@ -68,6 +68,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
+  const [tappedCard, setTappedCard] = useState<number | null>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -391,32 +392,32 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="relative group overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black">
-              <img src={IMAGES.MEN_SUIT} alt="The Executive Navy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-60" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-8 text-center cursor-pointer">
-                <p className="text-gold font-serif text-3xl mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">The Executive Navy</p>
-                <p className="text-white/90 text-sm leading-relaxed translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+            <div className="relative overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black cursor-pointer"onClick={() => setTappedCard(tappedCard === 0 ? null : 0)}>
+              <img src={IMAGES.MEN_SUIT} alt="The Executive Navy" className={`w-full h-full object-cover transition-transform duration-700 ${tappedCard === 0 ? 'scale-110 opacity-60' : 'opacity-90 hover:scale-110 hover:opacity-60'}`} referrerPolicy="no-referrer" />
+              <div className={`absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent transition-all duration-500 flex flex-col items-center justify-end p-8 text-center ${tappedCard === 0 ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}>
+                <p className={`text-gold font-serif text-3xl mb-4 transition-transform duration-500 ${tappedCard === 0 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>The Executive Navy</p>
+                <p className={`text-white/90 text-sm leading-relaxed transition-transform duration-500 delay-75 ${tappedCard === 0 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>
                   A well-tailored suit is more than just a combination of fabric and thread; it is a silent manifesto of ambition and self-respect that bridges the gap between who a man is and who he aspires to be. Whether it is the sharp, architectural lines of an executive office suite designed for leadership, the romantic elegance of a bespoke wedding ensemble that captures a once-in-a-lifetime moment, or a refined professional look that commands a room without saying a word, craftsmanship is the defining factor. In the heart of Nairobi, where heritage meets modern style, a truly great suit serves as a showcase of meticulous detail and timeless sophistication, ensuring that every stitch tells a personal story of excellence and purpose.
                 </p>
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black">
-              <img src={IMAGES.LADIES_SUIT} alt="Bespoke Femininity" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-60" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-8 text-center cursor-pointer">
-                <p className="text-gold font-serif text-3xl mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Bespoke Femininity</p>
-                <p className="text-white/90 text-sm leading-relaxed translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+            <div className="relative overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black cursor-pointer"onClick={() => setTappedCard(tappedCard === 1 ? null : 1)}>
+              <img src={IMAGES.LADIES_SUIT} alt="Bespoke Femininity" className={`w-full h-full object-cover transition-transform duration-700 ${tappedCard === 1 ? 'scale-110 opacity-60' : 'opacity-90 hover:scale-110 hover:opacity-60'}`} referrerPolicy="no-referrer" />
+              <div className={`absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent transition-all duration-500 flex flex-col items-center justify-end p-8 text-center ${tappedCard === 1 ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}>
+                <p className={`text-gold font-serif text-3xl mb-4 transition-transform duration-500 ${tappedCard === 1 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>Bespoke Femininity</p>
+                <p className={`text-white/90 text-sm leading-relaxed transition-transform duration-500 delay-75 ${tappedCard === 1 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>
                   For a bespoke women’s suit, the true essence lies in the delicate balance between power and elegance, where the garment is meticulously crafted to honor the unique contours of the female silhouette. Whether it is a sharp, double-breasted power suit designed to command the boardroom with authority, or a fluid, tailored ensemble for a sophisticated evening event, each piece is a celebration of individuality and refined detail. Beyond mere clothing, these creations are an investment in confidence, using premium fabrics and expert craftsmanship to ensure that every stitch reflects the wearer’s grace, strength, and timeless sense of style.
                 </p>
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black">
-              <img src={IMAGES.MAROON_SUIT} alt="Bold Statements" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-60" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-8 text-center cursor-pointer">
-                <p className="text-gold font-serif text-3xl mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Bold Statements</p>
-                <p className="text-white/90 text-sm leading-relaxed translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                  This collection is engineered for those who treat style as a high-stakes power play. It moves away from the expected, utilizing aggressive silhouettes and deep, visceral tones—like our signature maroon—to create a look that is as much an identity as it is a garment. Each piece serves as a masterclass in architectural tailoring, featuring razor-sharp lapels and a structured fit that demands attention without ever having to ask for it. Designed for the modern woman in Nairobi who leads with conviction, these suits act as a tailored suit of armor, blending structural integrity with a fierce, uncompromising presence.
+            <div className="relative overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black cursor-pointer" onClick={() => setTappedCard(tappedCard === 2 ? null : 2)}>
+              <img src={IMAGES.MAROON_SUIT} alt="Bold Statements" className={`w-full h-full object-cover transition-transform duration-700 ${tappedCard === 2 ? 'scale-110 opacity-60' : 'opacity-90 hover:scale-110 hover:opacity-60'}`} referrerPolicy="no-referrer" />
+              <div className={`absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent transition-all duration-500 flex flex-col items-center justify-end p-8 text-center ${tappedCard === 2 ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}>
+                <p className={`text-gold font-serif text-3xl mb-4 transition-transform duration-500 ${tappedCard === 2 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>Bold Statements</p>
+                <p className={`text-white/90 text-sm leading-relaxed transition-transform duration-500 delay-75 ${tappedCard === 2 ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>
+                  
                 </p>
               </div>
             </div>
@@ -432,14 +433,18 @@ export default function App() {
                 className="overflow-hidden mt-8"
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {ADDITIONAL_GALLERY_ITEMS.map((item, id) => (
-                    <div key={id} className="relative group overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black">
-                      <img src={item.img} alt={item.label} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-60" referrerPolicy="no-referrer" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-8 text-center cursor-pointer">
-                        <p className="text-gold font-serif text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{item.label}</p>
+                  {ADDITIONAL_GALLERY_ITEMS.map((item, id) => { 
+                  const cardIndex = id + 3;
+                  return (
+                    <div key={id} className="relative overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl bg-black cursor-pointer"
+                      onClick={() => setTappedCard(tappedCard === cardIndex ? null : cardIndex)}>
+                      <img src={item.img} alt={item.label} className={`w-full h-full object-cover transition-transform duration-700 ${tappedCard === cardIndex ? 'scale-110 opacity-60' : 'opacity-90 hover:scale-110 hover:opacity-60'}`} referrerPolicy="no-referrer" />
+                      <div className={`absolute inset-0 bg-gradient-to-t from-black via-navy/60 to-transparent transition-all duration-500 flex flex-col items-center justify-end p-8 text-center ${tappedCard === cardIndex ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}>
+                        <p className={`text-gold font-serif text-3xl transition-transform duration-500 ${tappedCard === cardIndex ? 'translate-y-0' : 'translate-y-4 hover:translate-y-0'}`}>{item.label}</p>
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
