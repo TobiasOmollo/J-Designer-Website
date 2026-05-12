@@ -18,7 +18,6 @@ import {
   X,
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { config } from "dotenv";
 
 // Image constants using reliable Picsum seeds for a high-end tailoring aesthetic
 const IMAGES = {
